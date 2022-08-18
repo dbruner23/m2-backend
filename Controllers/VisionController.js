@@ -1,6 +1,7 @@
 // Imports the Google Cloud AutoML library
 import { PredictionServiceClient } from '@google-cloud/automl';
 import fs from 'fs';
+import request from 'request';
 
 const projectId = '189820386533';
 const location = 'us-central1';
@@ -10,6 +11,8 @@ const modelId = 'ICN6096907424738836480';
 const client = new PredictionServiceClient({
     keyFilename: "./car-image-search-78a2e9d136be.json"
 });
+
+
 
 export const getVisionData = async (req, res) => {
     const { image } = req.body;
@@ -41,4 +44,13 @@ export const getVisionData = async (req, res) => {
     }
 
     predict()
+
+    const make = 'tesla'
+    const model = 'roadster'
+    request(`${process.env.CarsXE_API_URL}key=${process.env.CarsXE_API_Key}&make=${make}&model=${model}&format=json`, { json: true }, (err, res, body) => {
+        if (err) { return console.log(err); }
+        console.log(body.images[1].link);
+    });
+
+    // res.body = 
 }
