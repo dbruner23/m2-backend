@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import VisionRoute from "./Routes/VisionRoute.js";
 import UploadRoute from "./Routes/UploadRoute.js";
+// import SearchRoute from "./Routes/SearchRoute.js";
 
 
 
@@ -17,5 +18,6 @@ app.use('/images', express.static("images"));
 
 app.use('/upload', UploadRoute)
 app.use('/vision', VisionRoute)
+// app.use('/search', SearchRoute)
 
 app.listen(4000, () => console.log("port 4000 is active"));
