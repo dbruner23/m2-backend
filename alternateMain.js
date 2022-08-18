@@ -7,11 +7,13 @@ const modelId = 'ICN6096907424738836480';
 const filePath = '2021-nissan-frontier-crew-cab-4x4-sv-auto-angular-front-exterior-view_100785155_l.jpeg';
 
 // Imports the Google Cloud AutoML library
-const { PredictionServiceClient } = require('@google-cloud/automl').v1;
-const fs = require('fs');
+import { PredictionServiceClient } from '@google-cloud/automl';
+import fs from 'fs';
 
 // Instantiates a client
-const client = new PredictionServiceClient();
+const client = new PredictionServiceClient({
+    keyFilename: "./car-image-search-78a2e9d136be.json"
+});
 
 // Read the file content for translation.
 const content = fs.readFileSync(filePath);
