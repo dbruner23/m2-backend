@@ -2,16 +2,17 @@
 import { PredictionServiceClient } from '@google-cloud/automl';
 import fs from 'fs';
 import axios from 'axios'
+import dotenv from 'dotenv'
 // import { json } from 'body-parser';
 
-
-const projectId = '189820386533';
+dotenv.config();
+const projectId = process.env.PROJECT_ID;
 const location = 'us-central1';
-const modelId = 'ICN6096907424738836480';
+const modelId = process.env.MODEL_ID;
 
 // Instantiates a client
 const client = new PredictionServiceClient({
-    keyFilename: "./car-image-search-78a2e9d136be.json"
+    keyFilename: "./car-image-search-key2.json"
 });
 
 export const getVisionData = async (req, res) => {
@@ -60,7 +61,7 @@ export const getVisionData = async (req, res) => {
             // console.log(model);
 
             try {
-                axios.get(`http://api.carsxe.com/images?key=mxt1nrqj6_cyicji008_s31yhcqle&make=${make}&model=${model}&format=json`)
+                axios.get(`${process.env.CARS_API_URL}?key=${process.env.CARS_API_KEY}&make=${make}&model=${model}&format=json`)
                     .then(response => { res.send(response.data) });
             } catch (error) {
                 console.log(error);
