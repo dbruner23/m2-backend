@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import VisionRoute from "./Routes/VisionRoute.js";
 import UploadRoute from "./Routes/UploadRoute.js";
-import dotenv from 'dotenv';
+
 
 
 const app = express();

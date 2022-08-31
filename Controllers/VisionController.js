@@ -36,8 +36,6 @@ export const getVisionData = async (req, res) => {
             },
         };
 
-        // const [response] = await client.predict(request);
-
         
         try {
             const [response] = await client.predict(request);
@@ -59,9 +57,6 @@ export const getVisionData = async (req, res) => {
                     model = 'navara';
             };
 
-            // console.log(make);
-            // console.log(model);
-
             try {
                 axios.get(`${process.env.CARS_API_URL}?key=${process.env.CARS_API_KEY}&make=${make}&model=${model}&format=json`)
                     .then(response => { res.send(response.data) });
@@ -69,42 +64,10 @@ export const getVisionData = async (req, res) => {
                 console.log(error);
             }
             
-            // res.status(200).json(make);
         } catch (error) {
             res.status(500).json(error)
         }
-
-
-        
-        
-        // if (make === 'Mazda') {
-        //     const model = 'cx-5';
-        // } else if (make === 'Toyota') {
-        //     const model = 'camry';
-        // } else if (make === 'Holden') {
-        //     const model = 'commodore'
-        // } else if (make === 'Nissan') {
-        //     const model = 'navara'
-        // }; 
-
-
-        // for (const annotationPayload of response.payload) {
-        //     console.log(`Predicted class name: ${annotationPayload.displayName}`);
-        //     console.log(
-        //         `Predicted class score: ${annotationPayload.classification.score}`
-        //     );
-
-        // }
     }
 
     predict()
-
-    const make = 'tesla'
-    const model = 'roadster'
-    request(`${process.env.CarsXE_API_URL}key=${process.env.CarsXE_API_Key}&make=${make}&model=${model}&format=json`, { json: true }, (err, res, body) => {
-        if (err) { return console.log(err); }
-        console.log(body.images[1].link);
-    });
-
-    // res.body = 
 }
