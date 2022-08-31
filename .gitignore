@@ -10,6 +10,7 @@
 /build
 
 # misc
+.env
 .DS_Store
 .env
 .env.local
@@ -23,3 +24,6 @@ yarn-error.log*
 
 /client_secret_189820386533-p7fd7qm870p40p4qua764lihbd3jhkl1.apps.googleusercontent.com.json
 /car-image-search.json
+
+/car-image-search-key2.json
+/car-image-search-78a2e9d136be.json
